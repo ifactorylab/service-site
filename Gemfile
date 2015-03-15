@@ -9,7 +9,8 @@ gem 'rack-rewrite', require: 'rack/rewrite'
 gem 'redis'
 gem 'uuidtools'
 
-gem 'gem_auth', :path => '../gem_auth'
+# gem 'gem_auth', :path => '../gem_auth'
+gem 'gem_auth', git: 'git@github.com:ifactorylab/gem_auth.git'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
