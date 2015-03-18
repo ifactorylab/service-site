@@ -1,8 +1,11 @@
 class Site < ActiveRecord::Base
-  STATUS_DEVELOPMENT = 0
-  STATUS_LIVE = 5
-
   has_one :business
+
+  state_machine :status, :initial => :development do
+    event :create do
+      transition :development => :created
+    end
+  end
 
   before_save do
     self.app_url = "apps.venice.com/#{partner_id}/#{name.downcase.gsub(' ','')}"

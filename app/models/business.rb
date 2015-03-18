@@ -3,18 +3,7 @@ class Business < ActiveRecord::Base
   has_many :hours
 
   def to_h
-    self.attributes.merge({ hours: to_hash(hours) })
+    self.attributes.merge({ hours: Hour.to_day_h(hours) })
   end
 
-  def to_hash(hours)
-    hash = {}
-    hours.each do |hour|
-      if hash[hour.day]
-        hash[hour.day] = [hash[hour.day], hour.text].join(", ")
-      else
-        hash[hour.day] = hour.text
-      end
-    end
-    hash
-  end
 end

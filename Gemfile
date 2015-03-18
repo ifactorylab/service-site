@@ -15,6 +15,8 @@ gem 'gem_auth', git: 'https://github.com/ifactorylab/gem_auth.git'
 # Use postgresql as the database for Active Record
 gem 'pg'
 
+gem 'state_machine'
+
 group :production do
   gem 'rails_12factor'
   gem 'puma'
