@@ -12,7 +12,8 @@ class HoursController < ApplicationController
     update.each { |param| Hour.update(param[:id], param) }
     delete.each { |param| Hour.delete(param[:id]) }
 
-    Business.find(params[:id]).site.create!
+    site = Business.find(params[:id]).site
+    site.create! unless site.created?
     head 201
   end
 
