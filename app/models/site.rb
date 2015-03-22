@@ -20,9 +20,9 @@ class Site < ActiveRecord::Base
   after_save do
     # we don't have dns system yet, let's update app_url with
     # heroku url / site_id for now
-    self.app_url = "web-app-angular.herokuapp.com/#/#{self.id}"
-    self.domain = self.app_url
-    self.save!
+    self.update_attributes(
+      app_url: "web-app-angular.herokuapp.com/#/#{self.id}",
+      domain: "web-app-angular.herokuapp.com/#/#{self.id}")
   end
 
   def to_h
