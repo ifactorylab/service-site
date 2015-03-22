@@ -20,8 +20,8 @@ class Site < ActiveRecord::Base
   after_save :update_app_url
 
   def update_app_url
-    self.update_column(app_url: "web-app-angular.herokuapp.com/#/#{self.id}")
-    self.update_column(domain: "web-app-angular.herokuapp.com/#/#{self.id}")
+    self.update_column(:app_url, "web-app-angular.herokuapp.com/#/#{self.id}")
+    self.update_column(:domain, "web-app-angular.herokuapp.com/#/#{self.id}")
   end
 
   def to_h
