@@ -1,5 +1,6 @@
 class Site < ActiveRecord::Base
   has_one :business
+  skip_callback :save, :after, :update_app_url
 
   state_machine :status, :initial => :development do
     event :create do
@@ -20,6 +21,10 @@ class Site < ActiveRecord::Base
   after_save do
     # we don't have dns system yet, let's update app_url with
     # heroku url / site_id for now
+    update_app_url
+  end
+
+  def update_app_url
     self.update_attributes(
       app_url: "web-app-angular.herokuapp.com/#/#{self.id}",
       domain: "web-app-angular.herokuapp.com/#/#{self.id}")
