@@ -17,6 +17,14 @@ class Site < ActiveRecord::Base
     end
   end
 
+  after_save do
+    # we don't have dns system yet, let's update app_url with
+    # heroku url / site_id for now
+    self.app_url = "web-app-angular.herokuapp.com/#/#{self.id}"
+    self.domain = self.app_url
+    self.save!
+  end
+
   def to_h
     self.attributes.merge({ business: business.to_h })
   end
