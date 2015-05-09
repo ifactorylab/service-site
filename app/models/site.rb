@@ -8,9 +8,9 @@ class Site < ActiveRecord::Base
   end
 
   before_save do
-    self.app_url = "apps.venice.com/#{partner_id}/#{name.downcase.gsub(' ','')}"
+    self.app_url = "http://web-app-angular.herokuapp.com/#/#{self.id}"
     if self.domain
-      self.domain.gsub!("http://", "")
+      # self.domain.gsub!("http://", "")
       self.domain = self.domain[0...-1] if self.domain[-1, 1] == "/"
     else
       self.domain = self.app_url
@@ -20,8 +20,8 @@ class Site < ActiveRecord::Base
   after_save :update_app_url
 
   def update_app_url
-    self.update_column(:app_url, "web-app-angular.herokuapp.com/#/#{self.id}")
-    self.update_column(:domain, "web-app-angular.herokuapp.com/#/#{self.id}")
+    self.update_column(:app_url, "http://web-app-angular.herokuapp.com/#/#{self.id}")
+    self.update_column(:domain, "http://web-app-angular.herokuapp.com/#/#{self.id}")
   end
 
   def to_h
