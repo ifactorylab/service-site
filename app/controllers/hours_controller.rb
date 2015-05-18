@@ -24,12 +24,10 @@ class HoursController < ApplicationController
   private
 
   def update_params
-    hours = params.require(:hour)
-    time = parse_time(hours[:hour])
+    hour = params.require(:hour)
+    time = parse_time(hour.text)
     if time
         {
-          day: k.downcase,
-          business_id: params[:id],
           start_time: time[1],
           end_time: time[2],
           text: time[0]
