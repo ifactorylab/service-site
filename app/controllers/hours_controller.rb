@@ -7,10 +7,10 @@ class HoursController < ApplicationController
   end
 
   def create
-    create, update, delete = create_params
-    Hour.create!(create)
-    update.each { |param| Hour.update(param[:id], param) }
-    delete.each { |param| Hour.delete(param[:id]) }
+    # create, update, delete = create_params
+    Hour.create!(create_params)
+    # update.each { |param| Hour.update(param[:id], param) }
+    # delete.each { |param| Hour.delete(param[:id]) }
 
     site = Business.find(params[:id]).site
     site.create! unless site.created?
@@ -19,42 +19,26 @@ class HoursController < ApplicationController
 
   private
 
+  def update_params
+  end
+
   def create_params
     hash = params.require(:hours)
-      .permit(:monday => [:id, :text, :action],
-              :tuesday => [:id, :text, :action],
-              :wednesday => [:id, :text, :action],
-              :thursday => [:id, :text, :action],
-              :friday => [:id, :text, :action],
-              :saturday => [:id, :text, :action],
-              :sunday => [:id, :text, :action])
-    creates = []
-    updates = []
-    deletes = []
+      .permit(:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday)
     hash.map do |k, v|
       v.each do |hour|
-        time = parse_time(hour[:text])
+        time = parse_time(hour)
         if time
-          if hour[:action] == "create"
-            creates << { day: k.downcase,
-                         business_id: params[:id],
-                         start_time: time[1],
-                         end_time: time[2],
-                         text: time[0] }
-          elsif hour[:action] == "update"
-            updates << { id: hour[:id],
-                         day: k.downcase,
-                         business_id: params[:id],
-                         start_time: time[1],
-                         end_time: time[2],
-                         text: time[0] }
-          elsif hour[:action] == "delete"
-            deletes << { id: hour[:id] }
-          end
+            {
+              day: k.downcase,
+              business_id: params[:id],
+              start_time: time[1],
+              end_time: time[2],
+              text: time[0]
+            }
         end
       end
     end
-    [creates, updates, deletes]
   end
 
   # 8am to 5pm
