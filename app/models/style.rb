@@ -1,5 +1,6 @@
 class Style < ActiveRecord::Base
   belongs_to :site
+  mount_uploader :logo, LogoUploader
 
   def to_h
     self.attributes.merge({
