@@ -6,8 +6,8 @@ class Style < ActiveRecord::Base
     self.attributes.merge({
       logo: {
         small_url: logo.small.url,
-        logo: logo.url
+        url: logo.url
       }
-    }).except!("logo")
+    })
   end
 end
