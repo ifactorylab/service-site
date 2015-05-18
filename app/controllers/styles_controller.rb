@@ -4,7 +4,7 @@ class StylesController < ApplicationController
 
   def index
     style = Style.where(site_id: params[:id]).first
-    render json: { style: style }, status: 200
+    render json: { style: style.to_h }, status: 200
   end
 
   # curl -v -XPUT -F "file=@/Users/minkim/Desktop/download.jpeg" "http://localhost:3000/styles/c5afc3fc-9ab7-4191-a7f9-e735f4132aab/logo"
