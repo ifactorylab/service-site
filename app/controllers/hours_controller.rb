@@ -1,5 +1,5 @@
 class HoursController < ApplicationController
-  # before_action :authorize_partner
+  before_action :authorize_partner
 
   def index
     hours = Hour.where(business_id: params[:id])

@@ -7,6 +7,9 @@ gem 'rails-api'
 gem 'rack-cors', require: 'rack/cors'
 gem 'rack-rewrite', require: 'rack/rewrite'
 gem 'redis'
+gem 'carrierwave'
+gem 'rmagick'
+gem "fog"
 gem 'uuidtools'
 
 # gem 'gem_auth', :path => '../gem_auth'

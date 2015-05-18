@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     get '/:id', to: 'sites#show'
     post '/:id/businesses', to: 'businesses#create'
     get '/:id/businesses', to: 'businesses#index'
+    get '/:id/style', to: 'styles#index'
   end
 
   scope '/businesses' do
@@ -14,4 +15,7 @@ Rails.application.routes.draw do
 
   patch '/hours/:id', to: 'hours#update'
   delete '/hours/:id', to: 'hours#destroy'
+
+  patch 'style/:id', to: 'styles#update'
+  patch 'style/:id/logo', to: 'styles#upload'
 end

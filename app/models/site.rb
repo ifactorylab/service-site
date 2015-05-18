@@ -1,5 +1,6 @@
 class Site < ActiveRecord::Base
   has_one :business
+  has_one :style
 
   state_machine :status, :initial => :development do
     event :create do
@@ -22,6 +23,8 @@ class Site < ActiveRecord::Base
   def update_app_url
     self.update_column(:app_url, "http://web-app-angular.herokuapp.com/#/#{self.id}")
     self.update_column(:domain, "http://web-app-angular.herokuapp.com/#/#{self.id}")
+
+    Style.create!(:title => self.name, :site_id => self.id) unless self.style
   end
 
   def to_h
