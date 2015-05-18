@@ -9,7 +9,7 @@ CarrierWave.configure do |config|
     # endpoint:              'https://s3.example.com:8080' # optional, defaults to nil
   }
   config.storage        = :fog
-  config.fog_directory  = 'service-site-development'
+  config.fog_directory  = 'service-content-development'
   config.fog_public     = false
   config.fog_attributes = { 'Cache-Control' => "max-age=#{365.day.to_i}" } # optional, defaults to {}
 end
