@@ -7,6 +7,11 @@ Rails.application.routes.draw do
     get '/:id/businesses', to: 'businesses#index'
   end
 
-  post 'businesses/:id/hours', to: 'hours#create'
-  get 'businesses/:id/hours', to: 'hours#index'
+  scope '/businesses' do
+    post '/:id/hours', to: 'hours#create'
+    get '/:id/hours', to: 'hours#index'
+  end
+
+  patch '/hours/:id', to: 'hours#update'
+  delete '/hours/:id', to: 'hours#destroy'
 end

@@ -1,5 +1,5 @@
 class HoursController < ApplicationController
-  before_action :authorize_partner
+  # before_action :authorize_partner
 
   def index
     hours = Hour.where(business_id: params[:id])
@@ -7,29 +7,46 @@ class HoursController < ApplicationController
   end
 
   def create
-    # create, update, delete = create_params
     Hour.create!(create_params)
-    # update.each { |param| Hour.update(param[:id], param) }
-    # delete.each { |param| Hour.delete(param[:id]) }
-
     site = Business.find(params[:id]).site
     site.create! unless site.created?
     head 201
   end
 
+  def update
+    Hour.update(params[:id], update_params)
+  end
+
+  def destroy
+    Hour.delete(params[:id])
+  end
+
   private
 
   def update_params
+    hours = params.require(:hour)
+    time = parse_time(hours[:hour])
+    if time
+        {
+          day: k.downcase,
+          business_id: params[:id],
+          start_time: time[1],
+          end_time: time[2],
+          text: time[0]
+        }
+    end
   end
 
   def create_params
     hash = params.require(:hours)
-      .permit(:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday)
+      .permit(:monday => [], :tuesday => [], :wednesday => [],
+        :thursday => [], :friday => [], :saturday => [], :sunday => [])
     hash.map do |k, v|
+      day = []
       v.each do |hour|
         time = parse_time(hour)
         if time
-            {
+            day << {
               day: k.downcase,
               business_id: params[:id],
               start_time: time[1],
@@ -38,6 +55,7 @@ class HoursController < ApplicationController
             }
         end
       end
+      day
     end
   end
 
