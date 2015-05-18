@@ -25,7 +25,7 @@ class HoursController < ApplicationController
 
   def update_params
     hour = params.require(:hour).permit(:text)
-    time = parse_time(hour.text)
+    time = parse_time(hour[:text])
     if time
         {
           start_time: time[1],
