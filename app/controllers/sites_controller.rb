@@ -18,8 +18,6 @@ class SitesController < ApplicationController
   def show
     site = Site.includes(:business).find(params[:id])
     render json: { site: site.to_h }, status: 200
-  rescue ActiveRecord::RecordNotFound => e
-    head 404
   end
 
   private
