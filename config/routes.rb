@@ -18,4 +18,6 @@ Rails.application.routes.draw do
 
   patch 'style/:id', to: 'styles#update'
   patch 'style/:id/logo', to: 'styles#upload'
+
+  post '/booking', to: 'bookings#create'
 end
