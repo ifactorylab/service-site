@@ -1,5 +1,5 @@
 class PartnerMailer < ApplicationMailer
-  default from: 'notifications@example.com'
+  default from: "ifactory.lab@gmail.com"
 
   def booking_request_email(booking)
     @booking = booking

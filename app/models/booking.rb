@@ -9,6 +9,18 @@ class Booking < ActiveRecord::Base
     event :reject do
       transition :requested => :rejected
     end
+
+    after_transition any => :confirmed do |booking, transition|
+      UserMailer.booking_confirm_email(booking).deliver_now
+    end
+
+    after_transition any => :rejected do |booking, transition|
+      UserMailer.booking_reject_email(booking).deliver_now
+    end
   end
 
+  after_create do
+    # Send email to partner to notify
+    PartnerMailer.booking_request_email(booking).deliver_now
+  end
 end

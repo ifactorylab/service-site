@@ -6,7 +6,7 @@
   <body>
     <h1>You've got booking request </h1>
     <p>
-      You've got booking request from <%= @booking.first_name %> <%= @booking.last_name %> at <%= @booking.date %> - <%= @booking.time %> AM in <%= @booking.site.business.name %> for <%= @booking.number_of_person %> people
+      You've got booking request from <%= @booking.first_name %> <%= @booking.last_name %> at <%= @booking.datetime %> in <%= @booking.site.business.name %> for <%= @booking.number_of_person %> people
     </p>
     <p>
       To confirm this booking, just follow <a href="http://www.venice.com/bookings/<%= @booking.id %>">this link</a>

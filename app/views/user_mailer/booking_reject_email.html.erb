@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Your booking has been rejected </h1>
+    <p>
+      Hello <%= @booking.first_name %> <%= @booking.last_name %><br> Unfortunately, your booking request in <%= @booking.datetime %> at <%= @booking.site.business.name %> for <%= @booking.number_of_person %> people has been rejected.
+    </p>
+    <p>
+      To see your booking detail, just follow <a href="http://www.venice.com/bookings/<%= @booking.id %>">this link</a>
+    </p>
+    <p>Thanks and have a great day!</p>
+  </body>
+</html>
