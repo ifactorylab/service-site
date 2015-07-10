@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     post '/:id/businesses', to: 'businesses#create'
     get '/:id/businesses', to: 'businesses#index'
     get '/:id/style', to: 'styles#index'
+    post '/:id/booking', to: 'bookings#create'
   end
 
   scope '/businesses' do
@@ -19,5 +20,7 @@ Rails.application.routes.draw do
   patch 'style/:id', to: 'styles#update'
   patch 'style/:id/logo', to: 'styles#upload'
 
-  post '/booking', to: 'bookings#create'
+  patch 'booking/:id', to: 'bookings#update'
+  patch 'booking/:id/confirm', to: 'bookings#confirm'
+  patch 'booking/:id/reject', to: 'bookings#reject'
 end

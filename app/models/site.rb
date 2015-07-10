@@ -1,6 +1,7 @@
 class Site < ActiveRecord::Base
   has_one :business
   has_one :style
+  has_many :bookings
 
   state_machine :status, :initial => :development do
     event :create do

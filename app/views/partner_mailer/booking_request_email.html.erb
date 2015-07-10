@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>You've got booking request </h1>
+    <p>
+      You've got booking request from <%= @booking.first_name %> <%= @booking.last_name %> at <%= @booking.date %> - <%= @booking.time %> AM in <%= @booking.site.business.name %> for <%= @booking.number_of_person %> people
+    </p>
+    <p>
+      To confirm this booking, just follow <a href="http://www.venice.com/bookings/<%= @booking.id %>">this link</a>
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>

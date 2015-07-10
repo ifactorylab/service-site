@@ -1,6 +1,6 @@
 class CreateBookings < ActiveRecord::Migration
   def change
-    create_table :bookings do |t|
+    create_table :bookings, id: :uuid do |t|
       t.datetime :date
       t.datetime :time
       t.integer :number_of_person
