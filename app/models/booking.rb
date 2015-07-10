@@ -21,6 +21,6 @@ class Booking < ActiveRecord::Base
 
   after_create do
     # Send email to partner to notify
-    PartnerMailer.booking_request_email(booking).deliver_now
+    PartnerMailer.booking_request_email(self).deliver_now
   end
 end
