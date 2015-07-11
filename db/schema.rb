@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150710191140) do
+ActiveRecord::Schema.define(version: 20150711101833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20150710191140) do
     t.boolean  "partner_notified",  default: false
     t.boolean  "customer_notified", default: false
     t.datetime "datetime"
+    t.integer  "gmt_offset",        default: 0
   end
 
   create_table "businesses", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|

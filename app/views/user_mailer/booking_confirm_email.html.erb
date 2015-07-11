@@ -6,7 +6,7 @@
   <body>
     <h1>Your booking has been confirmed </h1>
     <p>
-      Hello <%= @booking.first_name %> <%= @booking.last_name %><br> Your booking request in <%= @booking.datetime %> at <%= @booking.site.business.name %> for <%= @booking.number_of_person %> people has been confirmed.
+      Hello <%= @booking.first_name %> <%= @booking.last_name %><br> Your booking request in <%= @booking.to_str_time %> at <%= @booking.site.business.name %> for <%= @booking.number_of_person %> people has been confirmed.
     </p>
     <p>
       To see your booking detail, just follow <a href="http://www.venice.com/bookings/<%= @booking.id %>">this link</a>

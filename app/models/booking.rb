@@ -19,8 +19,16 @@ class Booking < ActiveRecord::Base
     end
   end
 
+  before_save do
+    self.gmt_offset = self.datetime.to_time.gmt_offset;
+  end
+
   after_create do
     # Send email to partner to notify
     PartnerMailer.booking_request_email(self).deliver_now
+  end
+
+  def to_str_time
+    (self.datetime.to_time.utc + self.gmt_offset).strftime("%B %d %Y %I:%M %p")
   end
 end
