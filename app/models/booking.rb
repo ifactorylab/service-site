@@ -19,7 +19,7 @@ class Booking < ActiveRecord::Base
     end
   end
 
-  before_save do
+  before_create do
     self.gmt_offset = self.datetime.to_time.gmt_offset;
   end
 
