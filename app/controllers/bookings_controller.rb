@@ -34,7 +34,7 @@ class BookingsController < ApplicationController
 
   def create_params
     hash = params.require(:booking).permit(:datetime, :number_of_person,
-      :first_name, :last_name, :email, :phone_number)
+      :first_name, :last_name, :email, :phone_number, :gmt_offset)
     hash.each_value { |value| value.squish! if value.kind_of? String }
     hash.merge!(params.require(:booking).permit(:note))
     hash.merge!({ site_id: @site.id })
