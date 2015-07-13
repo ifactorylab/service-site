@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   patch 'style/:id', to: 'styles#update'
   patch 'style/:id/logo', to: 'styles#upload'
 
-  patch 'booking/:id', to: 'bookings#update'
-  patch 'booking/:id/confirm', to: 'bookings#confirm'
-  patch 'booking/:id/reject', to: 'bookings#reject'
+  patch 'bookings/:id', to: 'bookings#update'
+  patch 'bookings/:id/confirm', to: 'bookings#confirm'
+  patch 'bookings/:id/reject', to: 'bookings#reject'
 end
