@@ -29,7 +29,7 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.delete
-    render :nothing => true, :status => 200
+    head :ok
   end
 
   private
