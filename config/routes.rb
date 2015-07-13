@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get '/:id/businesses', to: 'businesses#index'
     get '/:id/style', to: 'styles#index'
     post '/:id/booking', to: 'bookings#create'
+    get '/:id/bookings', to: 'bookings#index'
   end
 
   scope '/businesses' do
