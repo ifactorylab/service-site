@@ -24,4 +24,5 @@ Rails.application.routes.draw do
   patch 'bookings/:id', to: 'bookings#update'
   patch 'bookings/:id/confirm', to: 'bookings#confirm'
   patch 'bookings/:id/reject', to: 'bookings#reject'
+  delete 'bookings/:id', to: 'bookings#destroy'
 end
