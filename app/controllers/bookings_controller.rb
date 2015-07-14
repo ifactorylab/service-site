@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
   before_action :set_site, :only => [:create, :index]
   before_action :set_booking, :only => [:confirm, :reject, :destroy, :show]
-  before_action :authorize_partner, :only => [:confirm, :reject, :index, :destroy, :show]
+  before_action :authorize_partner, :only => [:confirm, :reject, :destroy, :show]
 
   # curl -v -XPOST -H 'content-type: application/json' localhost:3000/sites/39d77ca1-319d-4b35-880f-3c918aa0f8f1/booking -d'{"booking":{"datetime":"2015-07-10 12:00:00", "first_name":"Min", "last_name":"Kim", "email":"minsikzzang@gmail.com","phone_number":"07565428714","number_of_person":2}}'
   def create
@@ -21,7 +21,7 @@ class BookingsController < ApplicationController
 
   # curl -v -XGET localhost:3000/sites/aa6214c5-af2b-45e5-8e21-042c9ce7e047/bookings
   def index
-    render json: { bookings: @site.bookings }, status: 200
+    render json: { bookings: @site.bookings.order(datetime: :asc) }, status: 200
   end
 
   # curl -v -XGET localhost:3000/bookings/3aa9a18d-a522-4e8e-83a1-bbbda75d2da9
