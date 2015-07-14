@@ -21,8 +21,11 @@ Rails.application.routes.draw do
   patch 'style/:id', to: 'styles#update'
   patch 'style/:id/logo', to: 'styles#upload'
 
-  patch 'bookings/:id', to: 'bookings#update'
-  patch 'bookings/:id/confirm', to: 'bookings#confirm'
-  patch 'bookings/:id/reject', to: 'bookings#reject'
-  delete 'bookings/:id', to: 'bookings#destroy'
+  scope '/bookings' do
+    get '/:id', to: 'bookings#show'
+    patch '/:id', to: 'bookings#update'
+    patch '/:id/confirm', to: 'bookings#confirm'
+    patch '/:id/reject', to: 'bookings#reject'
+    delete '/:id', to: 'bookings#destroy'
+  end
 end
