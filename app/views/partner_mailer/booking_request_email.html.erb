@@ -8,9 +8,12 @@
     <p>
       You have a booking request from <%= @booking.first_name %> <%= @booking.last_name %> for <%= @booking.to_str_time %> for <%= @booking.site.business.name %> (<%= @booking.number_of_person %> people)
     </p>
+    <p>Email: <%= @booking.email %></p>
+    <p>Contact: <%= @booking.phone_number %></p>
+    <br>
     <p>
       To confirm this booking, click <a href="http://<%= @url %>/#/app/commerce/bookings?id=<%= @booking.id %>">this link</a>
     </p>
-    <p>Thanks for joining and have a great day!</p>
+    <p>Thanks and have a great day!</p>
   </body>
 </html>
