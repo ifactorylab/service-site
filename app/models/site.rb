@@ -2,6 +2,7 @@ class Site < ActiveRecord::Base
   has_one :business
   has_one :style
   has_many :bookings
+  has_many :emails
 
   state_machine :status, :initial => :development do
     event :create do

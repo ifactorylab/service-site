@@ -8,6 +8,11 @@
     <p>
       Hello <%= @booking.first_name %> <%= @booking.last_name %><br><br> Your booking request on <%= @booking.to_str_time %> for <%= @booking.site.business.name %> (<%= @booking.number_of_person %> people) had been confirmed.
     </p>
+    <br>
+    <br>
+    <% if @email %>
+    <p><%= @email.content %></p>
+    <% end %>
     <p>Thanks and have a great day!</p>
   </body>
 </html>

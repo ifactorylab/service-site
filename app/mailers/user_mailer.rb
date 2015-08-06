@@ -3,6 +3,7 @@ class UserMailer < ApplicationMailer
 
   def booking_confirm_email(booking)
     @booking = booking
+    @email = Email.find_booking_confirm(booking.site)
     mail(to: @booking.email, subject: "Your booking has been confirmed with #{@booking.site.business.name}")
   end
 

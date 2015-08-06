@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150804210118) do
+ActiveRecord::Schema.define(version: 20150806202644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,14 @@ ActiveRecord::Schema.define(version: 20150804210118) do
     t.string   "footer_title_color"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+  end
+
+  create_table "emails", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.string   "site_id"
+    t.text     "content"
+    t.integer  "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "hours", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
