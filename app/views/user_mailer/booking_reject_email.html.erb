@@ -6,7 +6,7 @@
   <body>
     <h1>Your booking has been rejected </h1>
     <p>
-      Hello <%= @booking.first_name %> <%= @booking.last_name %><br><br> Unfortunately, your booking request on <%= @booking.to_str_time %> for <%= @booking.site.business.name %> (<%= @booking.number_of_person %> people)  has been rejected.
+      Hello <%= @booking.first_name %> <%= @booking.last_name %><br><br> Unfortunately, your booking request on <%= @booking.to_str_time %> for <%= @booking.site.business.name %> (<%= @booking.number_of_person %> <%= @people_unit %>)  has been rejected.
     </p>
     <p>Thanks and have a great day!</p>
   </body>

@@ -6,7 +6,7 @@
   <body>
     <h1>Your booking has been confirmed with <%= @booking.site.business.name %></h1>
     <p>
-      Hello <%= @booking.first_name %> <%= @booking.last_name %><br><br> Your booking request on <%= @booking.to_str_time %> for <%= @booking.site.business.name %> (<%= @booking.number_of_person %> people)  has been confirmed.
+      Hello <%= @booking.first_name %> <%= @booking.last_name %><br><br> Your booking request on <%= @booking.to_str_time %> for <%= @booking.site.business.name %> (<%= @booking.number_of_person %> <%= @people_unit %>)  has been confirmed.
     </p>
     <br>
     <% if @email %>

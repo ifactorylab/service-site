@@ -6,7 +6,7 @@
   <body>
     <h1>You have a booking request </h1>
     <p>
-      You have a booking request from <%= @booking.first_name %> <%= @booking.last_name %> for <%= @booking.to_str_time %> for <%= @booking.site.business.name %> (<%= @booking.number_of_person %> people)
+      You have a booking request from <%= @booking.first_name %> <%= @booking.last_name %> for <%= @booking.to_str_time %> for <%= @booking.site.business.name %> (<%= @booking.number_of_person %> <%= @people_unit %>)
     </p>
     <p>Email: <%= @booking.email %></p>
     <p>Contact: <%= @booking.phone_number %></p>
