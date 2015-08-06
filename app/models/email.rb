@@ -4,6 +4,6 @@ class Email < ActiveRecord::Base
   belongs_to :site
 
   def self.find_booking_confirm(site)
-    Email.where(site_id: site.id, type: TYPE_BOOKING_CONFIRM).first
+    Email.where(site_id: site.id, type_id: TYPE_BOOKING_CONFIRM).first
   end
 end
