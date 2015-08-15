@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     post '/', to: 'sites#create'
     get '/', to: 'sites#index'
     get '/:id', to: 'sites#show'
+    patch '/:id', to: 'sites#update'
     post '/:id/businesses', to: 'businesses#create'
     get '/:id/businesses', to: 'businesses#index'
     get '/:id/style', to: 'styles#index'

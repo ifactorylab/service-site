@@ -1,5 +1,6 @@
 class SitesController < ApplicationController
   before_action :authorize_partner
+  before_action :set_site, :only => [:update]
 
   # curl -v -XGET localhost:3000/sites -H 'Venice-Authorization: cee3eb61-2435-4a28-b422-9ebfacc8dbec'
   def index
@@ -24,13 +25,28 @@ class SitesController < ApplicationController
     render json: { site: site.to_h }, status: 200
   end
 
+  def update
+    @site.update!(update_params)
+    render nothing: true, status: 200
+  end
+
   private
 
+  def set_site
+    @site ||= Site.find(params[:id])
+  end
+
   def create_params
-    hash = params.require(:site).permit(:name, :domain, :ga_tracking_id)
+    hash = params.require(:site).permit(:name, :domain, :ga_tracking_id, :keywords)
     hash.each_value { |value| value.squish! if value.kind_of? String }
     hash.merge!(params.require(:site).permit(:description))
     hash.merge!({ partner_id: GemAuth.current_user.id })
   end
 
+  def update_params
+    hash = params.require(:site).permit(:name, :domain, :ga_tracking_id, :keywords)
+    hash.each_value { |value| value.squish! if value.kind_of? String }
+    hash.merge!(params.require(:site).permit(:description))
+    hash.merge!({ partner_id: GemAuth.current_user.id })
+  end
 end
