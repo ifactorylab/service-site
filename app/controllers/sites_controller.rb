@@ -27,7 +27,7 @@ class SitesController < ApplicationController
   private
 
   def create_params
-    hash = params.require(:site).permit(:name, :domain)
+    hash = params.require(:site).permit(:name, :domain, :ga_tracking_id)
     hash.each_value { |value| value.squish! if value.kind_of? String }
     hash.merge!(params.require(:site).permit(:description))
     hash.merge!({ partner_id: GemAuth.current_user.id })
